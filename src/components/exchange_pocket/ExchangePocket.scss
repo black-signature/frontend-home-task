@@ -1,0 +1,67 @@
+@import '../../styles/variables';
+
+.app-exchange_pocket {
+  padding: 30px 10px;
+  height: 160px;
+  
+  &.source {
+    background: $color-plain-bg;
+  }
+
+  &.destination {
+    background: $color-light-bg;
+
+    .app-exchange_amount-input {
+      input[type="number"], input[type="text"] {
+        background: $color-light-bg;
+      }
+    }
+  }
+
+  .app-exchange_currency-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+
+    .app-exchange_currency-selector {
+      .app-select_custom {
+        width: 90px;
+        select {
+          font-size: 24px;
+          width: 100px;
+        }
+      }
+    }
+
+    .app-exchange_amount-input {
+      input[type="text"], input[type="number"] {
+        border: none;
+        height: 40px;
+        text-align: right;
+        font-size: 24px;
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+
+  .app-exchange_balance {
+    display: flex;
+    color: $color-dark-bg;
+    margin-top: 10px;
+    
+    .app-exchange_source__currnency-symbol {
+      display: inline-block;
+      margin: 0 0 0 3px;
+      font-size: 16px;
+      color: $color-secondary;
+      &+span {
+        color: $color-secondary;
+        font-size: 16px;
+        margin-left: 2px;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import '../../styles/variables';
+
+header {
+  display: flex;
+  font-size: 18px;
+  font-weight: 700;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  border-bottom: 1px solid $color-light-bg;
+  padding: 0 10px;
+
+  .app-close {
+    cursor: pointer;
+    position: relative;
+    top: 3px;
+  }
+
+  .app-user_initial {
+    span {
+      font-size: 14px;
+      display: flex;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background: $color-secondary;
+      color: $color-plain-bg;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

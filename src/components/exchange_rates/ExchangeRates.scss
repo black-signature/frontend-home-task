@@ -1,0 +1,43 @@
+@import '../../styles/variables';
+
+.app-exchange_rates-container {
+  position: relative;
+
+  .app-exchange_source-toggler {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: $color-plain-bg;
+    color: $color-secondary;
+    top: -17px;
+    z-index: 9999;
+    left: 10px;
+    border: 1px solid $color-light-bg;
+    cursor: pointer;
+
+    > i {
+      position: relative;
+      top: 5px;
+      left: 5px;
+    }
+  }
+
+  .app-exchange_current-rate {
+    @extend .app-exchange_source-toggler;
+    display: flex;
+    width: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px;
+    justify-content: space-evenly;
+    padding: 0 12px;
+    cursor: default;
+
+    > div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
