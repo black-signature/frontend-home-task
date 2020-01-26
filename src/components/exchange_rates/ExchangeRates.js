@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ExchangeRates.scss';
 
+const FX_POLL_INTERVAL = 1000 * 10;
+let FX_POLL_INSTANCE = null;
 const ExchangeRates = (props) => {
-  const { currencyExchange, source, destination, currentRate } = props;
-  console.log('exchange rate props', source, destination, currentRate);
+  const { currencyExchange, uiInteractions, source, destination, currentRate, pollFXData, setTransactionDetails, transactionDetails } = props;
+
+  useEffect(() => {
+    pollFXData(uiInteractions.source, uiInteractions.destination);
+    setTransactionDetails(uiInteractions.source, uiInteractions.destination, 0);
+
+    if (uiInteractions.pollingStatus) {
+      if (transactionDetails.source === null || transactionDetails.destination === null) {
+        setTransactionDetails(uiInteractions.source, uiInteractions.destination, 0);
+      }
+
+      const pollMethod = () => {
+        console.log(`Polling ${uiInteractions.source}, ${uiInteractions.destination}`);
+        pollFXData(uiInteractions.source, uiInteractions.destination);
+
+        clearTimeout(FX_POLL_INSTANCE);
+        FX_POLL_INSTANCE = setTimeout(pollMethod, FX_POLL_INTERVAL);
+      };
+
+      clearTimeout(FX_POLL_INSTANCE);
+      FX_POLL_INSTANCE = setTimeout(pollMethod, FX_POLL_INTERVAL);
+    }
+  }, [uiInteractions.source, uiInteractions.destination]);
 
   return (
     <section className="app-exchange_rates-container">

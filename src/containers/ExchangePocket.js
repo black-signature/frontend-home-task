@@ -3,37 +3,32 @@ import { getFxRate } from '../lib/fxRates';
 import actions from '../actions'
 import ExchangePocket from '../components/exchange_pocket/ExchangePocket';
 
-const PAUSE_TIME_AFTER_TYPING = 500;
-let PAUSE_TIMEOUT_INSTANCE = null;
-
 const mapStateToProps = (state) => {
-  let allCurrencies = Object.keys(state.currencyExchange);
-  let currencyExchange = state.currencyExchange;
+  const { currencyExchange, uiInteractions, transactionDetails } = state;
+  let allCurrencies = Object.keys(currencyExchange);
   let pocketsPair = {
-    source: state.uiInteractions.source,
-    destination: state.uiInteractions.destination
+    source: uiInteractions.source,
+    destination: uiInteractions.destination
   };
 
   return {
     currencyExchange,
     allCurrencies,
-    pocketsPair
+    pocketsPair,
+    transactionDetails,
+    uiInteractions,
   }
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  onInputChange: (source, destination) => {
-    clearTimeout(PAUSE_TIMEOUT_INSTANCE);
-    PAUSE_TIMEOUT_INSTANCE = setTimeout(async () => {
-      const currentFxRate = await getFxRate(source, destination);
-      if (currentFxRate && currentFxRate['rates']) {
-        console.log(source, destination, currentFxRate['rates'][destination]);
-        dispatch(actions.pocketActions.updateFxRate(source, currentFxRate['rates'][destination]));
-      }
-      else {
-        console.log('Failed to load FX data. Please try again later');
-      }
-    }, PAUSE_TIME_AFTER_TYPING);
+  onInputChange: async (source, destination) => {
+    const currentFxRate = await getFxRate(source, destination);
+    if (currentFxRate && currentFxRate['rates']) {
+      dispatch(actions.pocketActions.updateFxRate(source, currentFxRate['rates'][destination]));
+    }
+    else {
+      console.log('Failed to load FX data. Please try again later');
+    }
   },
 
   onSelectCurrency: async (sourceCurrency, destinationCurrency) => {
@@ -41,7 +36,6 @@ const mapDispatchToProps = (dispatch) => ({
     const currentFxRate = await getFxRate(sourceCurrency, destinationCurrency);
 
     if (currentFxRate && currentFxRate['rates']) {
-      console.log(sourceCurrency, currentFxRate['rates'][destinationCurrency]);
       dispatch(actions.pocketActions.updateFxRate(sourceCurrency, currentFxRate['rates'][destinationCurrency]));
     }
     else {
@@ -49,7 +43,7 @@ const mapDispatchToProps = (dispatch) => ({
     }
   },
 
-  setTransactionDetails: (source, destination, amount, rate = 1) => {
+  setTransactionDetails: (source, destination, amount, rate = 0) => {
     dispatch(actions.pocketActions.setCurrentTransactionDetails(source, destination, amount, rate));
   }
 });

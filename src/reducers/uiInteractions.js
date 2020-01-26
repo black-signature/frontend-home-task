@@ -22,7 +22,7 @@ const uiInteractions = (state = {}, action) => {
 
     case uiActionTypes.UPDATE_POCKETS: {
       const { source, destination } = action;
-      
+
       return {
         ...state,
         source,

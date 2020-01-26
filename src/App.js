@@ -23,7 +23,7 @@ function App() {
   store.dispatch(actions.pocketActions.addMoney('INR', 500));
 
   store.dispatch(actions.uiActions.setInitialPockets('USD', 'GBP'));
-  store.dispatch(actions.uiActions.setPollingStatus(false)); // make this flag false to turn off auto polling fxrates
+  store.dispatch(actions.uiActions.setPollingStatus(true)); // make this flag false to turn off auto polling fxRates
 
   return (
     <Provider store={store}>
