@@ -27,20 +27,20 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `Libraries used`
+### Libraries used
 React, Redux, SASS 
 Have used container / component pattern and react hooks. No redux-thunk / saga used for this project. 
 
-##Folder Structure
-`actions` - All the action creators and action types
-`containers` - All containers for the project
-`components` - All components
-`reducers` - All reducers
-`pages` - Main page of the app (Can be scaled to have multiple pages too)
-`lib` - All 3rd party libraries can go here. (Library for fetching currency exchange rates (FX Rates))
+## Folder Structure
+* `actions/` - All the action creators and action types
+* `containers/` - All containers for the project
+* `components/` - All components
+* `reducers/` - All reducers
+* `pages/` - Main page of the app (Can be scaled to have multiple pages too)
+* `lib/` - All 3rd party libraries can go here. (Library for fetching currency exchange rates (FX Rates))
 
-##Scope of improvement
-- Swap currencies functionality can be implemented
-- More error handling can be added when there is no data provided by the FX API
-- More unit test cases can be added for better code quality purposes.
-- Have used https://exchangeratesapi.io/ for fetching FX rates, not sure about the reliability. Its free and no registration needed. Seems to be working fine :)
+## Scope of Improvement
+* Swap currencies functionality can be implemented
+* More error handling can be added when there is no data provided by the FX API
+* More unit test cases can be added for better code quality purposes.
+* Have used https://exchangeratesapi.io/ for fetching FX rates, not sure about the reliability. Its free and no registration needed. Seems alright.
