@@ -43,7 +43,7 @@ const mapDispatchToProps = (dispatch) => ({
     }
   },
 
-  setTransactionDetails: (source, destination, amount, rate = 0) => {
+  setTransactionDetails: (source, destination, amount, rate) => {
     dispatch(actions.pocketActions.setCurrentTransactionDetails(source, destination, amount, rate));
   }
 });

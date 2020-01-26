@@ -30,9 +30,9 @@ const ExchangeRates = (props) => {
 
   return (
     <section className="app-exchange_rates-container">
-      <div className="app-exchange_source-toggler">
+      {/* <div className="app-exchange_source-toggler">
         <i className="material-icons">swap_vert</i>
-      </div>
+      </div> */}
       <div className="app-exchange_current-rate">
         <div><i className="material-icons">trending_up</i></div>
         <div>

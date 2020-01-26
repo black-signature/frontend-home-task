@@ -25,7 +25,7 @@ const ExchangePocket = (props) => {
   };
 
   const onInputCurrency = () => {
-    let currInputVal = currentCurrencyInput.current.value === "" ? 0 : currentCurrencyInput.current.value.replace(/^0+/, '');
+    let currInputVal = currentCurrencyInput.current.value === "" ? 0 : currentCurrencyInput.current.value;
     selectedCurrency = currentCurrencySel.current.value;
 
     if (type === "source") {
@@ -46,15 +46,27 @@ const ExchangePocket = (props) => {
 
       if (type === "source") {
         let currPocketAmount = sourcePocket.value;
-        let convertedAmt = (currPocketAmount * transactionDetails.rate).toFixed(2);
-
-        targetPocket.value = convertedAmt;
+        if (currPocketAmount !== "") {
+          let convertedAmt = (currPocketAmount * transactionDetails.rate).toFixed(2);
+          if (convertedAmt > 0) {
+            targetPocket.value = convertedAmt;
+          }
+        }
+        else {
+          targetPocket.value = 0;
+        }
       }
       else {
         let currPocketAmount = targetPocket.value;
-        let convertedAmt = (currPocketAmount * transactionDetails.rate).toFixed(2);
-
-        sourcePocket.value = convertedAmt;
+        if (currPocketAmount !== "") {
+          let convertedAmt = (currPocketAmount * transactionDetails.rate).toFixed(2);
+          if (convertedAmt > 0) {
+            sourcePocket.value = convertedAmt;
+          }
+        }
+        else {
+          sourcePocket.value = 0;
+        }
       }
     }
   };

@@ -34,7 +34,7 @@ const pocketActions = {
     return {
       type: actionTypes.ADD_MONEY,
       currency,
-      amount,
+      amount: parseFloat(amount)
     }
   },
 
@@ -43,8 +43,8 @@ const pocketActions = {
       type: actionTypes.SET_CURRENT_TRANSACTION_DETAILS,
       source,
       destination,
-      amount,
-      rate
+      amount: parseFloat(amount),
+      rate: parseFloat(rate)
     }
   },
 
@@ -53,8 +53,8 @@ const pocketActions = {
       type: actionTypes.EXCHANGE,
       source,
       destination,
-      amount,
-      rate
+      amount: parseFloat(amount),
+      rate: parseFloat(rate)
     }
   },
 
@@ -62,7 +62,7 @@ const pocketActions = {
     return {
       type: actionTypes.UPDATE_FX_RATE,
       currency,
-      rate,
+      rate: parseFloat(rate)
     }
   }
 };
