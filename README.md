@@ -29,7 +29,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ### Libraries used
 React, Redux, SASS 
-Have used container / component pattern and react hooks. No redux-thunk / saga used for this project. 
+Have used container / component pattern with react hooks.
 
 ## Folder Structure
 * `actions/` - All the action creators and action types
