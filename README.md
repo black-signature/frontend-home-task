@@ -44,3 +44,4 @@ Have used container / component pattern with react hooks.
 * More error handling can be added when there is no data provided by the FX API
 * More unit test cases can be added for better code quality purposes.
 * Have used https://exchangeratesapi.io/ for fetching FX rates, not sure about the reliability. Its free and no registration needed. Seems alright.
+* Better ways to show errors or messages. Currently I have added the errors and messages as console.logs() for the sake of this demo. Kindly bear with me.
