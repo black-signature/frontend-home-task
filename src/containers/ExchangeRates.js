@@ -31,6 +31,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   setTransactionDetails: (source, destination, amount, rate = 0) => {
     dispatch(actions.pocketActions.setCurrentTransactionDetails(source, destination, amount, rate));
+  },
+
+  onSwapCurrencies: (source, destination) => {
+    dispatch(actions.uiActions.updatePockets(source, destination));
+    dispatch(actions.pocketActions.setCurrentTransactionDetails(source, destination, 0, 1));
   }
 });
 
