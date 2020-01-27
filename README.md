@@ -39,7 +39,6 @@ Have used container / component pattern with react hooks.
 * `pages/` - Main page of the app (Can be scaled to have multiple pages too)
 * `lib/` - All 3rd party libraries can go here. (Library for fetching currency exchange rates (FX Rates))
 
-## Scope of Improvement
-* More error handling can be added when there is no data provided by the FX API
+## Notes
 * Have used https://exchangeratesapi.io/ for fetching FX rates, not sure about the reliability. Its free and no registration needed. Seems alright.
-* Better ways to show errors or messages. Currently I have added the errors and messages as console.logs() for the sake of this demo. Kindly bear with me.
+* There are obviously better ways to show errors or messages in the UI. Currently I have added the errors and messages as console.logs() for the sake of this demo. Kindly bear with me.
